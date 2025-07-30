@@ -14,6 +14,11 @@ public class WeatherAppServlet {
         String path = "/path_to_log/dht_readings_log.txt";  //You can name your .txt file differently
         File file = new File(path);
 
+        String valueH = "";
+        String valueT = "";
+        String valueP = "";
+        String valueAlt = "";
+
         try {
 
             while (true) {
@@ -31,6 +36,33 @@ public class WeatherAppServlet {
                         System.out.println("END found. Stopping.");
                         scanner.close();
                         return;
+
+                    }
+
+                    String [] data = input.split("\\s+");
+
+                    switch (data[0]) {
+
+                        case "Humidity" -> {
+
+                            valueH = data[1];
+
+                        }
+                        case "Temperature" -> {
+
+                            valueT = data[1];
+
+                        }
+                        case "Pressure" -> {
+
+                            valueP = data[1];
+
+                        }
+                        case "Altitude" -> {
+
+                            valueAlt = data[1];
+
+                        }
 
                     }
 
