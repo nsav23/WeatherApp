@@ -16,7 +16,7 @@ public class WeatherAppServlet extends HttpServlet{
     protected void doGet (HttpServlet req, HttpServletResponse res)
             throws ServletException, IOException {
 
-        res.setContentType("application/json");
+        res.setContentType("application/json");     //Set content type to json
         res.setHeader("Cache-Control", "no-cache");
 
         String path = "/path_to_log/dht_readings_log.txt";  //You can name your .txt file differently
@@ -79,7 +79,7 @@ public class WeatherAppServlet extends HttpServlet{
 
         try {
 
-            valueCOR = calculateCOR(valueH, valueP, valueT);
+            valueCOR = calculateCOR(valueH, valueP, valueT);    //Stands for "chance of rain"
 
         } catch (Exception e) {
 
@@ -88,12 +88,13 @@ public class WeatherAppServlet extends HttpServlet{
         }
 
         String json = String.format("{ \"temperature\": \"%s\", \"humidity\": \"%s\", \"pressure\": \"%s\", \"altitude\": \"%s\", \"COR\": \"%s\" }",
-                valueT, valueH, valueP, valueAlt, valueCOR);
+                valueT, valueH, valueP, valueAlt, valueCOR);    //Format all values as .json to return as response
 
         res.getWriter().write(json);
 
     }
 
+    //Calculate COR(chance of rain) method
     private String calculateCOR(String valueH, String valueP, String valueT) {
 
         double humidity = Double.parseDouble(valueH);
