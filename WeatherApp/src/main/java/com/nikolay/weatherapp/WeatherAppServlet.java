@@ -87,8 +87,14 @@ public class WeatherAppServlet extends HttpServlet{
 
         }
 
-        String json = String.format("{ \"temperature\": \"%s\", \"humidity\": \"%s\", \"pressure\": \"%s\", \"altitude\": \"%s\", \"COR\": \"%s\" }",
-                valueT, valueH, valueP, valueAlt, valueCOR);    //Format all values as .json to return as response
+        //Formated json response
+        String json = "{"
+                + "\"altitude\": {\"label\": \"Altitude\", \"value\": \"" + valueAlt + " m\"}, "
+                + "\"pressure\": {\"label\": \"Pressure\", \"value\": \"" + valueP + " hPa\"}, "
+                + "\"humidity\": {\"label\": \"Humidity\", \"value\": \"" + valueH + " %\"}, "
+                + "\"temperature\": {\"label\": \"Temperature\", \"value\": \"" + valueT + " °C\"}, "
+                + "\"cor\": {\"label\": \"COR\", \"value\": \"" + valueCOR + " %\"} "
+                + "}";
 
         res.getWriter().write(json);
 
