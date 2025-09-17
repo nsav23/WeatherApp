@@ -32,4 +32,12 @@ function clear() {  /* Clears old values before displaying new ones(refreshing) 
      /*document.getElementById("uvReading").textContent = "";*/
      /*document.getElementById("airQualityReading").textContent = "";*/
 }
+
+document.addEventListener("DOMContentLoaded", () => {   /*Adds event listener to HTML and synchronises fetching values with Arduino writing them (4s interval),
+                                                          DOMContentLoaded - after HTML is loaded but before CSS and graphical elements */
+
+    readValues();   // Calls readValue() after page is loaded
+    setInterval(readValues, 4000);  //refreshes every 4 seconds to match Arduino data write
+
+});
 // TODO
