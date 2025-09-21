@@ -5,7 +5,7 @@
     <artifactId>weatherapp</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Archetype - SimpleTemperatureConverter</name>
+    <name>Archetype - WeatherApp</name>
     <url>http://maven.apache.org</url>
     <!-- so that maven uses the correct Java version -->
     <properties>
