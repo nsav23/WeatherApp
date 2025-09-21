@@ -5,12 +5,15 @@
     <artifactId>weatherapp</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Archetype - WeatherApp</name>
+    <name>WeatherApp</name>
     <url>http://maven.apache.org</url>
     <!-- so that maven uses the correct Java version -->
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+        <!-- Add UTF-8 support -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <!-- Add this so the servlet doesn't flag "HttpServlet" as missing -->
     <dependencies>
@@ -22,12 +25,25 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>WeatherApp</finalName>   <!-- Must match fetch("/WeatherApp/read") from script.js -->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
+            <!-- Tomcat plugin for running directly with Maven-->
+            <!--
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/WeatherApp</path>
+                    <port>8080</port>
+                </configuration>
+            </plugin>
+            -->
         </plugins>
     </build>
 </project>
