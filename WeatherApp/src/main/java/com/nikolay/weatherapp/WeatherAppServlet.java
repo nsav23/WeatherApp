@@ -13,91 +13,64 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class WeatherAppServlet extends HttpServlet{
 
-    protected void doGet (HttpServlet req, HttpServletResponse res)
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
-        res.setContentType("application/json");     //Set content type to json
+        res.setContentType("application/json");
         res.setHeader("Cache-Control", "no-cache");
 
-        String path = "/path_to_log/dht_readings_log.txt";  //You can name your .txt file differently
+        String path = "/home/nikolay/Desktop/dht_readings_log.txt";
         File file = new File(path);
 
-        String valueH = "";
-        String valueT = "";
-        String valueP = "";
-        String valueAlt = "";
+        String valueH = "?";
+        String valueT = "?";
+        String valueP = "?";
+        String valueAlt = "?";
 
         try (Scanner scanner = new Scanner(new FileReader(file))) {
-
-            //Execute continuously so long as there is data in the log
             while (scanner.hasNextLine()) {
-
                 String input = scanner.nextLine().trim();
 
-                if (input.isEmpty() || input.equals("END")) {
+                if (input.isEmpty() || input.equals("END")) continue;
 
-                    continue;
+                //Parse log data using ":"
+                String[] data = input.split(":");
 
+                if (data.length < 2) continue;
+
+                String label = data[0].trim();
+                String rawValue = data[1].trim();
+
+                //Regex for removing special symbols when parsing log values
+                String numeric = rawValue.replaceAll("[^0-9.\\-]", "");
+
+                switch (label) {
+                    case "Humidity" -> valueH = numeric;
+                    case "Temperature" -> valueT = numeric;
+                    case "Pressure" -> valueP = numeric;
+                    case "Altitude" -> valueAlt = numeric;
                 }
-
-                String[] data = input.split("\\s+");
-
-                switch (data[0]) {
-
-                    case "Humidity" -> {
-
-                        valueH = data[1];
-
-                    }
-                    case "Temperature" -> {
-
-                        valueT = data[1];
-
-                    }
-                    case "Pressure" -> {
-
-                        valueP = data[1];
-
-                    }
-                    case "Altitude" -> {
-
-                        valueAlt = data[1];
-
-                    }
-
-                }
-
             }
-
-        } catch (Exception e) { //To prevent crashing during execution if something goes wrong with the entire process
-
-            e.printStackTrace();    // For debugging purposes
-
-        }
-
-        String valueCOR = "";
-
-        try {
-
-            valueCOR = calculateCOR(valueH, valueP, valueT);    //Stands for "chance of rain"
-
         } catch (Exception e) {
-
-            valueCOR = "?";
-
+            e.printStackTrace();
         }
 
-        //Formated json response
+        String valueCOR;
+        try {
+            valueCOR = calculateCOR(valueH, valueP, valueT);
+        } catch (Exception e) {
+            valueCOR = "?";
+        }
+
         String json = "{"
                 + "\"altitude\": {\"label\": \"Altitude\", \"value\": \"" + valueAlt + " m\"}, "
                 + "\"pressure\": {\"label\": \"Pressure\", \"value\": \"" + valueP + " hPa\"}, "
                 + "\"humidity\": {\"label\": \"Humidity\", \"value\": \"" + valueH + " %\"}, "
                 + "\"temperature\": {\"label\": \"Temperature\", \"value\": \"" + valueT + " °C\"}, "
-                + "\"cor\": {\"label\": \"COR\", \"value\": \"" + valueCOR + " %\"} "
+                + "\"cor\": {\"label\": \"Chance of Rain\", \"value\": \"" + valueCOR + " %\"}"
                 + "}";
 
         res.getWriter().write(json);
-
     }
 
     //Calculate COR(chance of rain) method
