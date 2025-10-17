@@ -7,6 +7,7 @@ function readValues() {
     fetch("/WeatherApp/read")
         .then(response => response.json())
         .then(data => {
+            console.log("Received JSON:", data);
             document.getElementById("tempReading").textContent = data.temperature.label + "\n" + data.temperature.value;
             document.getElementById("humidityReading").textContent = data.humidity.label + "\n" + data.humidity.value;
             document.getElementById("atmPressureReading").textContent = data.pressure.label + "\n" + data.pressure.value;
@@ -16,6 +17,7 @@ function readValues() {
             /*document.getElementById("uvReading").textContent = "";*/
             /*document.getElementById("airQualityReading").textContent = "";*/
         }).catch(error => {
+            console.error("Error when fetching data", error);
             console.error("Error when fetching data", error);
         });
 
