@@ -1,4 +1,7 @@
-/*TODO*/
+/*TODO
+    - Align temperature and humidity text
+    - Remove inner boxes when done coding!!!
+*/
 body {
     font-family: Roboto, sans-serif;
     font-size: medium;
@@ -26,7 +29,6 @@ h2 {
     gap: 40px; /* Sets gaps between the top boxes in px */
     margin-top: 40px;
 }
-
 .box {
     display: inline-block; /* Inline block instead of flex for horizontal alignment */
     margin: 0 10px; /* Sets the horizontal margin for spacing between boxes */
