@@ -9,6 +9,8 @@ function readValues() {
         .then(data => {
             console.log("Received JSON:", data);
             document.getElementById("tempReading").textContent = data.temperature.label + "\n" + data.temperature.value;
+            document.getElementById("tempText").textContent = data.temptext.value;
+            document.getElementById("humText").textContent = data.humtext.value;
             document.getElementById("humidityReading").textContent = data.humidity.label + "\n" + data.humidity.value;
             document.getElementById("atmPressureReading").textContent = data.pressure.label + "\n" + data.pressure.value;
             document.getElementById("altitudeReading").textContent = data.altitude.label + "\n" + data.altitude.value;
