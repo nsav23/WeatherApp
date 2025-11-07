@@ -19,7 +19,7 @@ public class WeatherAppServlet extends HttpServlet{
         res.setContentType("application/json");
         res.setHeader("Cache-Control", "no-cache");
 
-        String path = "/home/nikolay/Desktop/dht_readings_log.txt";
+        String path = "/path_to_log/dht_readings_log.txt";
         File file = new File(path);
 
         String valueH = "?";
