@@ -7,6 +7,11 @@ function readValues() {
     fetch("/WeatherApp/read")
         .then(response => response.json())
         .then(data => {
+            let temperatureValue = parseFloat(data.temperature.value);
+            let temperatureIcon = document.getElementById("tempIcon");
+            let humidityValue = parseFloat(data.humidity.value);
+            let humidityIcon = document.getElementById("humIcon");
+
             console.log("Received JSON:", data);
             document.getElementById("tempReading").textContent = data.temperature.label + "\n" + data.temperature.value;
             document.getElementById("tempText").textContent = data.temptext.value;
@@ -18,15 +23,16 @@ function readValues() {
             document.getElementById("chanceOfRain").textContent = data.cor.label + "\n" + data.cor.value;
             /*document.getElementById("uvReading").textContent = "";*/
             /*document.getElementById("airQualityReading").textContent = "";*/
+
+            determineTemperatureIcon(temperatureValue, temperatureIcon);
+            determineHumidityIcon(humidityValue, humidityIcon);
         }).catch(error => {
             console.error("Error when fetching data", error);
             console.error("Error when fetching data", error);
         });
-
 }
 
 function clear() {  /* Clears old values before displaying new ones(refreshing) */
-
      document.getElementById("tempReading").textContent = "";
      document.getElementById("humidityReading").textContent = "";
      document.getElementById("atmPressureReading").textContent = "";
@@ -39,9 +45,34 @@ function clear() {  /* Clears old values before displaying new ones(refreshing) 
 
 document.addEventListener("DOMContentLoaded", () => {   /*Adds event listener to HTML and synchronises fetching values with Arduino writing them (4s interval),
                                                           DOMContentLoaded - after HTML is loaded but before CSS and graphical elements */
-
     readValues();   // Calls readValue() after page is loaded
     setInterval(readValues, 4000);  //refreshes every 4 seconds to match Arduino data write
-
 });
-// TODO
+
+function determineTemperatureIcon(temperatureValue, temperatureIcon){
+    if(temperatureValue <= -20){
+        temperatureIcon.src = "img/extreme_cold.png";
+    }else if(temperatureValue > -20 && temperatureValue <= -5){
+        temperatureIcon.src = "img/very_cold.png";
+    }else if(temperatureValue > -5 && temperatureValue <= 10){
+        temperatureIcon.src = "img/cold.png";
+    }else if(temperatureValue > 10 && temperatureValue <= 20){
+        temperatureIcon.src = "img/warm.png";
+    }else if(temperatureValue > 20 && temperatureValue <= 35){
+        temperatureIcon.src = "img/hot.png";
+    }else if(temperatureValue > 35){
+        temperatureIcon.src = "img/extreme_heat.png";
+    }
+}
+
+function determineHumidityIcon(humidityValue, humidityIcon){
+    if(humidityValue > 0 && humidityValue <= 30){
+        humidityIcon.src = "img/dry.png";
+    }else if(humidityValue > 30 && humidityValue <= 60){
+        humidityIcon.src = "img/normal.png";
+    }else if(humidityValue > 60){
+        humidityIcon.src = "img/humid.png";
+    }
+}
+/* TODO
+*/
