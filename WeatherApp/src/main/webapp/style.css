@@ -1,8 +1,3 @@
-/*TODO
-    - Align temperature and humidity text
-    - Align temperature and humidity icons
-    - Remove inner boxes when done coding!!!
-*/
 body {
     font-family: Roboto, sans-serif;
     font-size: medium;
@@ -13,45 +8,64 @@ h1 {
     font-size: 70px;
 }
 h2 {
-    /* Set h2 to relative and top: 135px so that it can
-    be moved down without moving the boxes as well */
-    position: relative;
-    top: 135px;
     font-size: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 .all-boxes {
-    margin-top: 175px;
+    margin-top: 80px;
 }
 /* Top three boxes */
 .top-boxes {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Aligns boxes to top */
-    gap: 40px; /* Sets gaps between the top boxes in px */
-    margin-top: 40px;
+    gap: 75px; /* Sets gaps between the top boxes in px */
 }
 .box {
-    display: inline-block; /* Inline block instead of flex for horizontal alignment */
-    margin: 0 10px; /* Sets the horizontal margin for spacing between boxes */
-    vertical-align: top;
-}
-.value {
-    border: solid 10px black;
-    width: 230px;
+    width: 220px;
     height: 240px;
+    border: 10px solid black;
     border-radius: 48px;
     display: flex;
     justify-content: center;
-    align-items: center; /* Centers the values inside the boxes */
-    font-size: 24px;
+    align-items: center;
+}
+.value-vertical {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.weather-icon {
+    width: 64px;
+    height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    flex-shrink: 0;
+}
+.label {
+    font-size: 16px;
+    font-weight: 500;
+}
+.valueLow .label {
+    margin-top: 0;
+}
+.number {
+    font-size: 22px;
+    font-weight: bold;
+}
+.text {
+    font-size: 14px;
+    opacity: 0.8;
 }
 /* Smaller values for bottom box */
 .valueLow {
-    font-size: 20px;
-}
-.label {
-    margin-top: 10px;
-    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
 }
 /* Large bottom container box */
 .bottom-box {
@@ -68,7 +82,7 @@ h2 {
 }
 /* Styles for the elements in the grid */
 .boxAtm, .boxAlt, .boxWSR, .boxCOR, .boxUV {
-    border: solid 5px black;
+    /*border: solid 5px black;*/
     border-radius: 24px;
     display: flex;
     justify-content: center;
