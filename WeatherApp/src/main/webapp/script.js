@@ -13,14 +13,14 @@ function readValues() {
             let humidityIcon = document.getElementById("humIcon");
 
             console.log("Received JSON:", data);
-            document.getElementById("tempReading").textContent = data.temperature.label + "\n" + data.temperature.value;
+            document.getElementById("tempReading").textContent = data.temperature.value;
             document.getElementById("tempText").textContent = data.temptext.value;
             document.getElementById("humText").textContent = data.humtext.value;
-            document.getElementById("humidityReading").textContent = data.humidity.label + "\n" + data.humidity.value;
-            document.getElementById("atmPressureReading").textContent = data.pressure.label + "\n" + data.pressure.value;
-            document.getElementById("altitudeReading").textContent = data.altitude.label + "\n" + data.altitude.value;
+            document.getElementById("humidityReading").textContent = data.humidity.value;
+            document.getElementById("atmPressureReading").textContent = data.pressure.value;
+            document.getElementById("altitudeReading").textContent = data.altitude.value;
             /*document.getElementById("windSpeedReading").textContent = "";*/
-            document.getElementById("chanceOfRain").textContent = data.cor.label + "\n" + data.cor.value;
+            document.getElementById("chanceOfRain").textContent = data.cor.value;
             /*document.getElementById("uvReading").textContent = "";*/
             /*document.getElementById("airQualityReading").textContent = "";*/
 
@@ -46,7 +46,7 @@ function clear() {  /* Clears old values before displaying new ones(refreshing) 
 document.addEventListener("DOMContentLoaded", () => {   /*Adds event listener to HTML and synchronises fetching values with Arduino writing them (4s interval),
                                                           DOMContentLoaded - after HTML is loaded but before CSS and graphical elements */
     readValues();   // Calls readValue() after page is loaded
-    setInterval(readValues, 4000);  //refreshes every 4 seconds to match Arduino data write
+    setInterval(readValues, 20000);     //Refresh every 20 seconds instead of 4 because flickering looks annoying
 });
 
 function determineTemperatureIcon(temperatureValue, temperatureIcon){
@@ -74,5 +74,3 @@ function determineHumidityIcon(humidityValue, humidityIcon){
         humidityIcon.src = "img/humid.png";
     }
 }
-/* TODO
-*/
