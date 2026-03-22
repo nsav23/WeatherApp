@@ -1,7 +1,5 @@
 package com.nikolay.weatherapp;
 
-//=== WIP (for logic test only!!!) ===
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
