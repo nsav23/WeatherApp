@@ -1,10 +1,12 @@
 import serial       #pyserial library to communicate with the Arduino board
+import time
 
 SERIAL_PORT = "/dev/ttyACM0"    #The serial port the arduino uses(Could be different for diffrent people!!!)
 BAUD_RATE = 9600    #The baud rate the Arduino uses to communicate with the PC
 LOG_FILE = "dht_readings_log.txt"   #The .txt file where the output from the Arduino IDE Serial monitor will be written
 
 def main():
+    start_time = time.time()
     try:
 #Open serial connection to Arduino and wait 1s before receiving data, recieve data with 1 second interval
         ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)  
@@ -14,6 +16,14 @@ def main():
                 line = ser.readline().decode("utf-8").strip()
                 f.write(line + "\n")
                 f.flush()
+                if time.time() - start_time >= 86400:   #240 seconds = 4 minutes(for testing)
+                    print("Clearing log file!")
+                    #Close & clear
+                    f.close()
+                    open(LOG_FILE, "w").close() #using "w" on already existing file truncates it to 0 bytes 
+                    #Reopen & continue
+                    f = open(LOG_FILE, "a", buffering = 1)
+                    start_time = time.time()                    
  #Add keyboard combination for interrupting the porcess manually
     except KeyboardInterrupt:
         print("Interrupted manually by user!")
