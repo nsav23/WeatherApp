@@ -21,24 +21,32 @@ A full-stack weather monitoring project that reads sensor data from an Arduino, 
 
 ### ⚡ Installation
 
-1.	Connect the ardunio and the sensors as shown in these digrams: (TODO) 
+1. Connect the Arduino and the sensors as shown in these diagrams: (TODO)
 2. Upload the .ino file from the project to the Arduino board
-3. If you choose to log the sensor readings with a python script using Linux:
-   - install pyserial: pip install pyserial   
-   - download the .py script from the project
-   - find out which port the Arduino is connected to(use either of these commands in the terminal): ls /dev/ttyACM* or dmesg | grep tty
-4. While the Arduino is running execute the python script from the terminal: python3 dht_data_log.py
-(make sure the Serial port in the Arduino IDE is closed before doing that)
-5.	Build the Java Web App
-   •	From the project root (where pom.xml is):  mvn clean package
-   •	This will generate a .war file inside the target/ directory.	
-6.	Deploy to Tomcat
-   •	Rename the .war file to: WeatherApp.war (optional but recommended):
-   •	Copy it to: apache-tomcat/webapps/
-   •	Start Tomcat: ./catalina.sh start from Tomcat bin directory
-7.	Run the app:
-   •	http://localhost:8080/WeatherApp/ in browser address bar
+3. If you choose to log the sensor readings with a Python script using Linux:
+   - Install pyserial:
+     pip install pyserial
+   - Download the .py script from the project
+   - Find the port the Arduino is connected to:
+     ls /dev/ttyACM*
+     or
+     dmesg | grep tty
+4. While the Arduino is running, execute the Python script:
+   python3 dht_data_log.py
+   (Make sure the Serial port in the Arduino IDE is closed before doing that)
+5. Build the Java Web App:
+   - From the project root (where pom.xml is):
+     mvn clean package
+   - This generates a .war file inside the target/ directory
+6. Deploy to Tomcat:
+   - Rename the .war file to WeatherApp.war (optional)
+   - Copy it to apache-tomcat/webapps/
+   - Start Tomcat:
+     ./catalina.sh start
+7. Run the app:
+   http://localhost:8080/WeatherApp/
 
+```
 📁 Project Structure
 WeatherApp/
 ├── pom.xml
@@ -60,6 +68,7 @@ WeatherApp/
             │   └── ...
             └── WEB-INF
                 └── web.xml
+```
 
 🛠️Design Prototype
 ![concept_img](https://github.com/nsav23/WeatherApp/blob/main/Other%20Images/concept.png)
