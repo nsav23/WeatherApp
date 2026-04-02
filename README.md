@@ -79,7 +79,7 @@ WeatherApp/
 5.	UI updates dynamically without page reload
 
 ✨Working App
-
+![app_img](https://github.com/nsav23/WeatherApp/blob/main/Other%20Images/Animation.gif)
 📚 Third-party Libraries
 
 This project uses the following open-source Arduino libraries:
