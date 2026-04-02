@@ -62,6 +62,7 @@ WeatherApp/
                 └── web.xml
 
 🛠️Design Prototype
+![concept_img](https://github.com/nsav23/WeatherApp/blob/main/Other%20Images/concept.png)
 
 🛠️ Technologies Used
 1.	Arduino IDE (C/C++) 
