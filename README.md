@@ -21,9 +21,17 @@ A full-stack weather monitoring project that reads sensor data from an Arduino, 
 
 ### ⚡ Installation
 
-1. Connect the Arduino and the sensors as shown in these diagrams: (TODO)
-2. Upload the .ino file from the project to the Arduino board
-3. If you choose to log the sensor readings with a Python script using Linux:
+1. Connect the Arduino and the sensors as shown in these diagrams:
+   
+    BMP180  
+   ![bmp180_img](https://github.com/nsav23/WeatherApp/blob/main/Other%20Images/bmp180.png?raw=true)      
+    DHT22   
+   ![dht22_img](https://github.com/nsav23/WeatherApp/blob/main/Other%20Images/dht22.png?raw=true)
+
+   The simplest way to do it is using a breadboard as shown in the photo: (TODO)
+    
+3. Upload the .ino file from the project to the Arduino board
+4. If you choose to log the sensor readings with a Python script using Linux:
    - Install pyserial:
      pip install pyserial
    - Download the .py script from the project
@@ -31,19 +39,19 @@ A full-stack weather monitoring project that reads sensor data from an Arduino, 
      ls /dev/ttyACM*
      or
      dmesg | grep tty
-4. While the Arduino is running, execute the Python script:
+5. While the Arduino is running, execute the Python script:
    python3 dht_data_log.py
    (Make sure the Serial port in the Arduino IDE is closed before doing that)
-5. Build the Java Web App:
+6. Build the Java Web App:
    - From the project root (where pom.xml is):
      mvn clean package
    - This generates a .war file inside the target/ directory
-6. Deploy to Tomcat:
+7. Deploy to Tomcat:
    - Rename the .war file to WeatherApp.war (optional)
    - Copy it to apache-tomcat/webapps/
    - Start Tomcat:
      ./catalina.sh start
-7. Run the app:
+8. Run the app:
    http://localhost:8080/WeatherApp/
 
 ```
