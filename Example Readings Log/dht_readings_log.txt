@@ -1,0 +1,112 @@
+Humidity: 51.90%
+Temperature: 26.80 °C
+Pressure: 1361.61 hPa
+Altitude: 251.27 m
+Pressure: 1361.59 hPa
+Altitude: 251.25 m
+Humidity: 51.90%
+Temperature: 26.80 °C
+Pressure: 1361.61 hPa
+Altitude: 251.27 m
+
+DHT22 init!
+BMP180 init!
+
+
+
+
+Humidity: 51.80%
+Temperature: 26.80 °C
+Pressure: 1361.61 hPa
+Altitude: 251.29 m
+
+
+
+
+Humidity: 51.70%
+Temperature: 26.80 °C
+Pressure: 1361.69 hPa
+Altitude: 251.25 m
+
+
+
+
+Humidity: 51.70%
+Temperature: 26.80 °C
+Pressure: 1361.73 hPa
+Altitude: 251.29 m
+
+
+
+
+Humidity: 51.90%
+Temperature: 26.80 °C
+Pressure: 1361.77 hPa
+Altitude: 251.32 m
+
+
+
+
+Humidity: 52.00%
+Temperature: 26.80 °C
+Pressure: 1361.75 hPa
+Altitude: 251.32 m
+
+
+
+
+Humidity: 51.80%
+Temperature: 26.80 °C
+Pressure: 1361.67 hPa
+Altitude: 251.29 m
+
+
+
+
+Humidity: 51.80%
+Temperature: 26.80 °C
+Pressure: 1361.67 hPa
+Altitude: 251.25 m
+
+
+
+
+Humidity: 51.70%
+Temperature: 26.80 °C
+Pressure: 1361.75 hPa
+Altitude: 251.32 m
+
+
+
+
+Humidity: 52.00%
+Temperature: 26.90 °C
+Pressure: 1361.88 hPa
+Altitude: 251.36 m
+
+
+
+
+Humidity: 51.90%
+Temperature: 26.80 °C
+Pressure: 1361.85 hPa
+Altitude: 251.43 m
+
+
+
+
+Humidity: 51.90%
+Temperature: 26.80 °C
+Pressure: 1361.85 hPa
+Altitude: 251.40 m
+
+
+
+
+Humidity: 51.80%
+Temperature: 26.80 °C
+Pressure: 1361.88 hPa
+Altitude: 251.43 m
+
+
+END
