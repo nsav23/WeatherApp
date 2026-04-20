@@ -28,7 +28,9 @@ A full-stack weather monitoring project that reads sensor data from an Arduino, 
     DHT22   
    ![dht22_img](https://github.com/nsav23/WeatherApp/blob/main/Other%20Images/dht22.png?raw=true)
 
-   The simplest way to do it is using a breadboard as shown in the photo: (TODO)
+   The simplest way to do it is using a breadboard as shown in the photo:
+
+   ![arduino_img](https://github.com/nsav23/WeatherApp/blob/main/Other%20Images/arduino_setup%20(copy).jpg?raw=true)
     
 3. Upload the .ino file from the project to the Arduino board
 4. If you choose to log the sensor readings with a Python script using Linux:
